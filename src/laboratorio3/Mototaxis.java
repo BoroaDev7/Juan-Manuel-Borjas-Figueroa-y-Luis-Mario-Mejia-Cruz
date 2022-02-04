@@ -1,13 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package laboratorio3;
 
-/**
- *
- * @author famil
- */
-public class Mototaxis {
+import java.util.ArrayList;
+
+public class Mototaxis extends Transportes {
+    private int maxcap;
+
+    public Mototaxis() {
+        super();
+    }
+
+    public Mototaxis(String placa, String color,ArrayList<Transportistas>transportista,int maxcap) {
+       super(placa, color,transportista);
+        this.maxcap = maxcap;
+    }
+
+    public int getMaxcap() {
+        return maxcap;
+    }
+
+    public void setMaxcap(int maxcap) {
+        this.maxcap = maxcap;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "maxcap=" + maxcap ;
+    }
+
     
 }

@@ -36,6 +36,5 @@ public class Clases {
         return "Nombre de la Clase = " + nombredeclase + " Coodigo de Clase = " + codigodeclase ;
     }
     
-    
             
 }
