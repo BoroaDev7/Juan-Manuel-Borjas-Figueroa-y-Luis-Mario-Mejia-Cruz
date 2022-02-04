@@ -8,7 +8,7 @@ public class Transportes {
     private String color;
     private ArrayList<Transportistas> transportista=new ArrayList();
     private ArrayList <Estaciones> estacion=new ArrayList();
-    private Rapiditos rapiditios[];
+    
     public Transportes() {
     }
 

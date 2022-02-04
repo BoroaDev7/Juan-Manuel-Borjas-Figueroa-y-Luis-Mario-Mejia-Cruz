@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Rapiditos extends Transportes {
     private int numsillas;
     private ArrayList<Alumnos> alumnos=new ArrayList();
-    private int capacidadmax;
+    private int capacidadmax =numsillas;
 
     public Rapiditos() {
         super();

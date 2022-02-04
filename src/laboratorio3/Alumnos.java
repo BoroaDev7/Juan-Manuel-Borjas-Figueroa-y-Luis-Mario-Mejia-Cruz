@@ -4,21 +4,22 @@
  */
 package laboratorio3;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
 public class Alumnos extends Beneficiarios {
     private int idestudiante;
-    private Clases clases;
+    private ArrayList<Clases>clasesalumno=new ArrayList<Clases>();
 
     public Alumnos() {
         super();
     }
 
-    public Alumnos(int idestudiante, Clases clases, String nombrebene, int identidad, Date fechanacimiento) {
+    public Alumnos( String nombrebene, int identidad, Date fechanacimiento,int idestudiante) {
         super(nombrebene, identidad, fechanacimiento);
         this.idestudiante = idestudiante;
-        this.clases = clases;
+        
     }
 
     public int getIdestudiante() {
@@ -29,17 +30,19 @@ public class Alumnos extends Beneficiarios {
         this.idestudiante = idestudiante;
     }
 
-    public Clases getClases() {
-        return clases;
+    public ArrayList<Clases> getClases() {
+        return clasesalumno;
     }
 
-    public void setClases(Clases clases) {
-        this.clases = clases;
+    public void setClases(ArrayList<Clases> clases) {
+        this.clasesalumno = clases;
     }
+
+    
 
     @Override
     public String toString() {
-        return super.toString() + "ID del Estudiante=" + idestudiante + ", Clases=" + clases ;
+        return super.toString() + "ID del Estudiante=" + idestudiante + ", Clases=" + clasesalumno ;
     }
 
     

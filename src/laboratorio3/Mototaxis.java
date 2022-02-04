@@ -4,7 +4,7 @@ package laboratorio3;
 import java.util.ArrayList;
 
 public class Mototaxis extends Transportes {
-    private int maxcap;
+    private int maxcap = 2;
 
     public Mototaxis() {
         super();

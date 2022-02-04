@@ -4,7 +4,7 @@ package laboratorio3;
 import java.util.ArrayList;
 
 public class Taxis extends Transportes {
-    private int capacidadmax ;
+    private int capacidadmax = 4;
     private int numtaxi;
 
     public Taxis() {
