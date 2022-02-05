@@ -233,12 +233,12 @@ public static Scanner leer = new Scanner(System.in);
             System.out.println("Ingrese el numero de asientos ");
             int numsillas=leer.nextInt();
            
-            int capacidadmax=numsillas;   
+            capmax=numsillas;   
             
             transporte.add(new Rapiditos(placa,color,transportista,alumnos,numsillas));
         }
         else if(tipo.equals("taxis")||tipo.equals("Taxis") || tipo.equals("Taxi") ||tipo.equals("taxi")){
-            int maxcap=4;
+            capmax=4;
             System.out.println("Ingrese el numero de Taxi");
             int numerotaxi=leer.nextInt(); 
             if(verificarnumtaxi(numerotaxi)){
@@ -251,7 +251,7 @@ public static Scanner leer = new Scanner(System.in);
             
         }
         else if (tipo.equals("mototaxis")||tipo.equals("Mototaxis") || tipo.equals("mototaxi") ||tipo.equals("Mototaxi")){
-            int maxcapmot=2;
+            capmax=2;
             transporte.add(new Mototaxis(placa,color,transportista,maxcapmot));
         }
     }
@@ -316,13 +316,15 @@ public static Scanner leer = new Scanner(System.in);
          System.out.println("Inserte la posicion del transporte en la cual se subira el alumno");
          possub=leer.nextInt();
          while(alumnos.size()<capmax){
-         transporte.get(possub).getAlumnotrans().add(alumnos.);
+             System.out.println("Ingrese la posicion del alumno a subirse");
+              int posalumn=leer.nextInt();
+              transporte.get(possub).getAlumnotrans().add(alumnos.get(posalumn));
          }
      }
      
      public static void listaralum(){
-     for (Alumnos alumno : alumnos) {
-            System.out.println(alumno.toString());
+     for (Transportes alumno : transporte) {
+            System.out.println(alumno.getAlumnotrans());
     }
     }
      public static void escogertransport(){
