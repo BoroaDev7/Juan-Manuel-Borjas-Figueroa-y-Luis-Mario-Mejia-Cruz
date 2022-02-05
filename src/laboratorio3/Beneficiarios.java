@@ -11,6 +11,12 @@ public class Beneficiarios {
     public Beneficiarios() {
     }
 
+    public Beneficiarios(String nombrebene, int identidad) {
+        this.nombrebene = nombrebene;
+        this.identidad = identidad;
+        
+    }
+
     public Beneficiarios(String nombrebene, int identidad, Date fechanacimiento) {
         this.nombrebene = nombrebene;
         this.identidad = identidad;
@@ -43,7 +49,7 @@ public class Beneficiarios {
 
     @Override
     public String toString() {
-        return "Nombre Beneficiario= " + nombrebene + " Identidad=" + identidad + ", Fecha de Nacimiento=" + fechanacimiento ;
+        return "Nombre = " + nombrebene + " Identidad=" + identidad + ", Fecha de Nacimiento=" + fechanacimiento ;
     }
     
     

@@ -16,10 +16,12 @@ public class Buses extends Transportes{
         super();
     }
 
-    public Buses(int numsillasbus, int capacperdepie, String placa, String color, ArrayList<Transportistas> transportista) {
+    public Buses(String placa, String color, ArrayList<Transportistas> transportista,ArrayList<Alumnos>alumnos,int numsillasbus, int capacperdepie,int capmax) {
         super(placa, color, transportista);
         this.numsillasbus = numsillasbus;
         this.capacperdepie = capacperdepie;
+        this.alumnos=alumnos;
+        this.capmax=capmax;
     }
 
     public ArrayList<Alumnos> getAlumnos() {
@@ -56,7 +58,7 @@ public class Buses extends Transportes{
 
     @Override
     public String toString() {
-        return super.toString() +"alumnos=" + alumnos + ", numsillasbus=" + numsillasbus + ", capacperdepie=" + capacperdepie + ", capmax=" + capmax ;
+        return super.toString() +"alumnos=" + alumnos + ", numsillasbus=" + numsillasbus + ", capacperdepie=" + capacperdepie + ", capmax=" + capmax  ;
     }
 
    

@@ -15,7 +15,7 @@ public class Transportistas extends Beneficiarios {
         super();
     }
     
-    public Transportistas(int aniosexperiencia, String apodo, String nombrebene, int identidad, Date fechanacimiento) {
+    public Transportistas( String nombrebene, int identidad, Date fechanacimiento,int aniosexperiencia, String apodo) {
         super(nombrebene, identidad, fechanacimiento);
         this.aniosexperiencia = aniosexperiencia;
         this.apodo = apodo;

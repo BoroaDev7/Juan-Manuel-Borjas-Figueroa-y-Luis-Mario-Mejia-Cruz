@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Laboratorio3 {
@@ -17,9 +18,10 @@ public static Scanner leer = new Scanner(System.in);
     static ArrayList<Transportes> transporte=new ArrayList<Transportes>();
     static ArrayList<Estaciones> estacion=new ArrayList<Estaciones>();
     static DateFormat pedirfechas=new SimpleDateFormat("dd/MM/yyyy");
+    
+    
     public static void main(String[] args) throws ParseException {
        
-        
         do{
             opcion( menu() );
         }while(true);
@@ -38,7 +40,7 @@ public static Scanner leer = new Scanner(System.in);
                 "6. Crear transporte \n" +
                 "7. Simulacion\n" +
                 "8. Listar Clases\n" +
-                "9.Listar Rutas\n" +
+                "9. Listar Rutas\n" +
                 "10.Listar Alumnos\n" +
                 "11.Listar Transportistas\n" +
                 "12.Listar Transportes\n" +
@@ -66,10 +68,10 @@ public static Scanner leer = new Scanner(System.in);
          crearTransportista();
         }
         else if(opcion == 6){
-           
+           agregarTransporte();
         }
         else if (opcion == 7){
-
+          simulacion();
         }
         else if (opcion == 8){
             listarClases();
@@ -94,7 +96,7 @@ public static Scanner leer = new Scanner(System.in);
     
      public static void crearestacion(){
             System.out.println("Ingrese el nombre de la estacion");
-            String nombreestacion=leer.nextLine();
+            String nombreestacion=leer.next();
             System.out.println("Ingrese coordenada X");
             int coordenada_x=leer.nextInt();
             System.out.println("Ingrese coordenada Y");
@@ -124,20 +126,38 @@ public static Scanner leer = new Scanner(System.in);
        
       public static void registrarlumno() throws ParseException{
         System.out.println("Ingrese su nombre de alumno ");
-        String nombrealumno= leer.nextLine();
+        String nombrealumno= leer.next();
           System.out.println("Ingrese su id");
           int identidad=leer.nextInt();
+          
           System.out.println("Ingrese sus fecha de nacimiento(dia/mes/año)");
-          String fecha=leer.nextLine();
+          String fecha=leer.next();
           Date fechanac=pedirfechas.parse(fecha);
         System.out.println("Ingrese su id de estudiante ");
         int idestudiante=leer.nextInt();
  
+        if(verificaridestudiante(idestudiante) && verificarid(identidad)){
+            System.out.println("Dos personas no pueden tener las mismas id");
+            System.out.println("");
+             System.out.println("Ingrese su id");
+           identidad=leer.nextInt();
+           System.out.println("Ingrese su id de estudiante ");
+         idestudiante=leer.nextInt();
+        }  
+    alumnos.add(new Alumnos(nombrealumno,identidad,fechanac,idestudiante));
         
-        alumnos.add(new Alumnos(nombrealumno,identidad,fechanac,idestudiante));
+      }
+      
+      public static boolean verificarid(int identidad){
+        for(Alumnos alumno:alumnos){
+            if(alumno.getIdentidad()==identidad){
+               return true;
+            }
+        }
+       return false;
     }
       
-       public static boolean verificarid(int idestudiante){
+       public static boolean verificaridestudiante(int idestudiante){
         for(Alumnos alumno:alumnos){
             if(alumno.getIdestudiante()==idestudiante){
                return true;
@@ -160,9 +180,14 @@ public static Scanner leer = new Scanner(System.in);
         System.out.println("Identidad");
         int identidadTransportista=leer.nextInt();
         System.out.println("Fecha de nacimiento");
-        String fecha=leer.nextLine();
+        String fecha=leer.next();
           Date fechatrans=pedirfechas.parse(fecha);
-
+           System.out.println("Ingrese los años de Experiencia");
+           int aniosexp=leer.nextInt();
+           System.out.println("Ingrese Apodo");
+           String apodo=leer.next();
+           transportista.add(new Transportistas(nombreTransportista,identidadTransportista,fechatrans,aniosexp,apodo));
+        
     }
     public static boolean verificarIdTranportista(int identidadTransportista){
         for(Transportistas transpo:transportista){
@@ -173,32 +198,116 @@ public static Scanner leer = new Scanner(System.in);
         return false;
     }
     
+    public static void agregarTransporte(){
+        System.out.println("Ingrese la placa");
+            String placa=leer.next();
+            if(verificarplaca(placa)){
+                System.out.println("Dos transportes no pueden tener la misma placa");
+                System.out.println("");
+                System.out.println("Ingrese la placa");
+                 placa=leer.next();
+            }
+            System.out.println("Ingrese el color del transporte");
+            String color=leer.next();
+        System.out.println("Ingrese el tipo de transporte");
+        String tipo=leer.next();
+        
+        
+        if(tipo.equals("buses") || tipo.equals("Buses") ||tipo.equals("Bus")|| tipo.equals("bus")) {
+            System.out.println("Ingrese el numero de asientos ");
+            int numerodeasientos = leer.nextInt();
+            System.out.println("Ingrese el numero de personas de pie");
+            int genteparada = leer.nextInt();
+            int capmax = numerodeasientos + genteparada;
+
+           
+            transporte.add(new Buses(placa,color,transportista,alumnos,numerodeasientos,genteparada,capmax));
+   
+           
+        }
+        else if(tipo.equals("rapidito")||tipo.equals("Rapidito") || tipo.equals("Rapiditos") ||tipo.equals("rapiditos") ){
+            System.out.println("Ingrese el numero de asientos ");
+            int numsillas=leer.nextInt();
+           
+            int capacidadmax=numsillas;   
+            
+            transporte.add(new Rapiditos(placa,color,transportista,alumnos,numsillas));
+        }
+        else if(tipo.equals("taxis")||tipo.equals("Taxis") || tipo.equals("Taxi") ||tipo.equals("taxi")){
+            int maxcap=4;
+            System.out.println("Ingrese el numero de Taxi");
+            int numerotaxi=leer.nextInt(); 
+            if(verificarnumtaxi(numerotaxi)){
+                System.out.println("Dos taxis no pueden tener el mismo numero");
+                System.out.println("");
+                System.out.println("Ingrese el numero de taxi");
+                 numerotaxi=leer.nextInt();
+            }
+            transporte.add(new Taxis(placa,color,transportista,numerotaxi));
+            
+        }
+        else if (tipo.equals("mototaxis")||tipo.equals("Mototaxis") || tipo.equals("mototaxi") ||tipo.equals("Mototaxi")){
+            int maxcapmot=2;
+            transporte.add(new Mototaxis(placa,color,transportista,maxcapmot));
+        }
+    }
+    
+     public static boolean verificarplaca(String placa ){
+        for(Transportes transportes:transporte){
+            if(transportes.getPlaca().equals(placa)){
+                return true;
+            }
+        }
+        return false;
+    }
+     public static boolean verificarnumtaxi(int numerotaxi ){
+        for(Transportes transportes:transporte){
+            if(transporte.equals(numerotaxi)){
+                return true;
+            }
+        }
+        return false;
+    }
+     
+     public static void simulacion(){
+         System.out.println("0. Salir\n" +
+             "1. Subir alumno al transporte\n" +
+             "2. Bajar alumno del transporte\n" +
+             "3. Listar alumnos del transporte\n" +
+             "4. Escoger transportista\n" +
+             "5. Quitar transportista\n" +
+             "6. Añadir ruta\n" +
+             "7. Quitar ruta\n" +
+             "8. Imprimir transporte\n" +
+             "9. Comenzar\n");
+     }
+    
    public static void listarClases(){
-        for (Clases clases : clases) {
-            System.out.println(clases.toString());
+        for (Clases clase : clases) {
+            System.out.println(clase.toString());
     }
     }
     
    public static void listarEstaciones(){
         for (Estaciones estaciones : estacion) {
-            System.out.println(estacion.toString());
+            System.out.println(estaciones.toString());
     }
     }
    
    public static void listarAlumnos(){
         for (Alumnos alumno : alumnos) {
-            System.out.println(alumnos.toString());
+            System.out.println(alumno.toString());
     }
     }
    
    public static void listarTransportistas(){
         for (Transportistas transpor : transportista) {
-            System.out.println(transportista.toString());
+            System.out.println(transpor.toString());
     }
     }
    public static void listarTransportes(){
         for (Transportes transportes : transporte) {
-            System.out.println(transporte.toString());
+            System.out.println(transportes.toString());
     }
     }
    

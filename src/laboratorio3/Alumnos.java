@@ -15,6 +15,12 @@ public class Alumnos extends Beneficiarios {
     public Alumnos() {
         super();
     }
+    public Alumnos( String nombrebene, int identidad,int idestudiante ) {
+        super(nombrebene, identidad );
+        this.idestudiante = idestudiante;
+        
+    }
+    
 
     public Alumnos( String nombrebene, int identidad, Date fechanacimiento,int idestudiante) {
         super(nombrebene, identidad, fechanacimiento);

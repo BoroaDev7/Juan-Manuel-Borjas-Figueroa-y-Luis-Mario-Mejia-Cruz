@@ -13,10 +13,9 @@ public class Rapiditos extends Transportes {
         super();
     }
 
-    public Rapiditos(String placa, String color,ArrayList<Transportistas>transportista,int numsillas,ArrayList<Alumnos>alumnos,int capacidadmax) {
+    public Rapiditos(String placa, String color,ArrayList<Transportistas>transportista,ArrayList<Alumnos>alumnos,int numsillas) {
         super(placa, color,transportista);
         this.numsillas=numsillas;
-        this.capacidadmax=capacidadmax;
         this.alumnos=alumnos;
     }
 
