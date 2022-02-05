@@ -252,7 +252,7 @@ public static Scanner leer = new Scanner(System.in);
         }
         else if (tipo.equals("mototaxis")||tipo.equals("Mototaxis") || tipo.equals("mototaxi") ||tipo.equals("Mototaxi")){
             capmax=2;
-            transporte.add(new Mototaxis(placa,color,transportista,maxcapmot));
+            transporte.add(new Mototaxis(placa,color,transportista,capmax));
         }
     }
     

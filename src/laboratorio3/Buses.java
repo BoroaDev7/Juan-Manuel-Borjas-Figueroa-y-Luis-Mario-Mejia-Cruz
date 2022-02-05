@@ -58,7 +58,7 @@ public class Buses extends Transportes{
 
     @Override
     public String toString() {
-        return super.toString() +"alumnos=" + alumnos + ", numsillasbus=" + numsillasbus + ", capacperdepie=" + capacperdepie + ", capmax=" + capmax  ;
+        return super.toString() +"alumnos=" + alumnos_bus + ", numsillasbus=" + numsillasbus + ", capacperdepie=" + capacperdepie + ", capmax=" + capmax  ;
     }
 
    
