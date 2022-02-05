@@ -18,7 +18,11 @@ public static Scanner leer = new Scanner(System.in);
     static ArrayList<Transportes> transporte=new ArrayList<Transportes>();
     static ArrayList<Estaciones> estacion=new ArrayList<Estaciones>();
     static DateFormat pedirfechas=new SimpleDateFormat("dd/MM/yyyy");
-    
+    static ArrayList<Transportes> buses=new ArrayList<Transportes>();
+    static int genteparada;
+    static int numerodeasientos;
+    static int capmax;
+    static int possub;
     
     public static void main(String[] args) throws ParseException {
        
@@ -215,13 +219,13 @@ public static Scanner leer = new Scanner(System.in);
         
         if(tipo.equals("buses") || tipo.equals("Buses") ||tipo.equals("Bus")|| tipo.equals("bus")) {
             System.out.println("Ingrese el numero de asientos ");
-            int numerodeasientos = leer.nextInt();
+             numerodeasientos = leer.nextInt();
             System.out.println("Ingrese el numero de personas de pie");
-            int genteparada = leer.nextInt();
-            int capmax = numerodeasientos + genteparada;
+             genteparada = leer.nextInt();
+            capmax = numerodeasientos + genteparada;
 
            
-            transporte.add(new Buses(placa,color,transportista,alumnos,numerodeasientos,genteparada,capmax));
+            buses.add(new Buses(placa,color,transportista,alumnos,numerodeasientos,genteparada,capmax));
    
            
         }
@@ -272,21 +276,78 @@ public static Scanner leer = new Scanner(System.in);
      public static void simulacion(){
          System.out.println("0. Salir\n" +
              "1. Subir alumno al transporte\n" +
-             "2. Bajar alumno del transporte\n" +
-             "3. Listar alumnos del transporte\n" +
-             "4. Escoger transportista\n" +
-             "5. Quitar transportista\n" +
-             "6. Añadir ruta\n" +
-             "7. Quitar ruta\n" +
-             "8. Imprimir transporte\n" +
-             "9. Comenzar\n");
+             "2. Listar alumnos del transporte\n" +
+             "3. Escoger transportista\n" +
+             "4. Añadir ruta\n" +
+             "5. Imprimir transporte\n" +
+             "6. Destruir\n");
+         System.out.println("Ingrese una opcion");
+         int opcionsim=leer.nextInt();
      }
-    
+     
+     public void opcionesSimu(int opcionsim){
+         if(opcionsim==0){
+              System.exit(0);
+         }
+         else if(opcionsim==1){
+          subiralumnos();
+         }
+         else if(opcionsim==2){
+             listaralum();
+             
+         }
+         else if(opcionsim==3){
+             escogertransport();
+         }
+         else if(opcionsim==4){
+             
+         }
+         else if(opcionsim==5){
+             imprimirtranspo();
+         }
+         else if(opcionsim==6){
+             destruir();
+         }
+     
+     }
+     
+     
+     public static void subiralumnos(){
+         System.out.println("Inserte la posicion del transporte en la cual se subira el alumno");
+         possub=leer.nextInt();
+         while(alumnos.size()<capmax){
+         transporte.get(possub).getAlumnotrans().add(alumnos.);
+         }
+     }
+     
+     public static void listaralum(){
+     for (Alumnos alumno : alumnos) {
+            System.out.println(alumno.toString());
+    }
+    }
+     public static void escogertransport(){
+         
+         System.out.println("Inserte la posicion del transportista que se subira");
+         int posta=leer.nextInt();
+         transporte.get(possub).getTransportista().add(transportista.get(posta));
+     }
+     
+     public static void imprimirtranspo(){
+         for (Transportes transportes : transporte) {
+            System.out.println(transportes.toString());
+    }
+     }
+     
+     public static void destruir(){
+         transporte.remove(possub);
+     }
+     
    public static void listarClases(){
         for (Clases clase : clases) {
             System.out.println(clase.toString());
     }
     }
+   
     
    public static void listarEstaciones(){
         for (Estaciones estaciones : estacion) {

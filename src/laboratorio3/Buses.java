@@ -7,7 +7,7 @@ package laboratorio3;
 import java.util.ArrayList;
 
 public class Buses extends Transportes{
-    private ArrayList<Alumnos> alumnos=new ArrayList<Alumnos>();
+    private ArrayList<Alumnos> alumnos_bus=new ArrayList<Alumnos>();
     private int numsillasbus;
     private int capacperdepie;
     private int capmax = numsillasbus + capacperdepie;
@@ -20,16 +20,16 @@ public class Buses extends Transportes{
         super(placa, color, transportista);
         this.numsillasbus = numsillasbus;
         this.capacperdepie = capacperdepie;
-        this.alumnos=alumnos;
+        this.alumnos_bus=alumnos;
         this.capmax=capmax;
     }
 
     public ArrayList<Alumnos> getAlumnos() {
-        return alumnos;
+        return alumnos_bus;
     }
 
     public void setAlumnos(ArrayList<Alumnos> alumnos) {
-        this.alumnos = alumnos;
+        this.alumnos_bus = alumnos;
     }
 
     public int getNumsillasbus() {
