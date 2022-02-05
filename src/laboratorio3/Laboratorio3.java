@@ -75,7 +75,7 @@ public static Scanner leer = new Scanner(System.in);
            agregarTransporte();
         }
         else if (opcion == 7){
-          simulacion();
+           simulacion();
         }
         else if (opcion == 8){
             listarClases();
@@ -280,12 +280,10 @@ public static Scanner leer = new Scanner(System.in);
              "3. Escoger transportista\n" +
              "4. Añadir ruta\n" +
              "5. Imprimir transporte\n" +
-             "6. Destruir\n");
-         System.out.println("Ingrese una opcion");
+             "6. Destruir\n"+
+             "Ingrese una opcion");
          int opcionsim=leer.nextInt();
-     }
-     
-     public void opcionesSimu(int opcionsim){
+         
          if(opcionsim==0){
               System.exit(0);
          }
@@ -308,8 +306,9 @@ public static Scanner leer = new Scanner(System.in);
          else if(opcionsim==6){
              destruir();
          }
-     
      }
+     
+     
      
      
      public static void subiralumnos(){
